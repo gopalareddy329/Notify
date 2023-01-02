@@ -1,0 +1,13 @@
+<div id="open"><img class="img" src="http://cacult.com/wp-content/uploads/2020/06/bell-notification-communication-1096280.jpg" ><h6 id="count"></h6></div>
+
+<ul id="mainmenu">
+        <li>System Notifications:-</li><br>
+        <div class="content">
+            
+            {%for i in Data%}
+                <li>{{i.message}} <span>{{i.broadcaste|timesince}}</span></li>
+            {% endfor %}
+        </div>
+
+        <div id="close"><img class="img" src="https://allsolve.net/wp-content/uploads/2018/05/closebutton.png" ></div>
+    </ul>

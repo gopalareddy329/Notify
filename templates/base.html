@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="favicon/favicon.ico">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+</head>
+<link rel="stylesheet" type="text/css" href="{% static 'css/new1.css'%}">
+<body>
+
+    <p id="check-div"><strong>{{error}}</strong>
+    {% if error %}
+        <a href="{% url 'home'%}">ok</a>
+    {% endif %}
+    </p>
+
+    <nav>
+        <h2>Notify {% include 'notification.html'%}</h2>
+        <p class="user">{{request.user.username}}</p>
+        {% if request.user.is_authenticated %}
+            {{request.user.username|json_script:"username"}}
+            <div class="menu">
+                <img id="openmenu" src="https://assets.stickpng.com/images/588a6507d06f6719692a2d15.png">
+
+                <div class="menu-container" id="menu-container">
+                    <ul class="menu-content">
+                        <li>   
+                                <a href="{% url 'logout' %}" class="logout">logout</a>   
+                        </li>
+                        <li><a id="join">Join Room</a></li>
+                        <li>
+                            <form action="{% url 'join' %}" method="post" id="joinform">
+                                {% csrf_token %}
+                                <input type="text" id="joinid" name="joinid" placeholder="Enter roomid">
+                            </form>
+                        </li>
+                        <li><a id="createroom">Create Room</a></li>
+                        <li>
+                            <form action="{% url 'createroom' %}" method="post" id="createform">
+                                {% csrf_token %}
+                                <input type="text" id="createid" name="createid" placeholder="Enter name">
+                            </form>
+                        </li>
+                        <li><a href="{% url 'deleteroom'%}">Delete Room</a></li>
+                        
+                    </ul>
+                    
+                </div>
+                
+            </div>
+            {% if userrooms %}
+                <div id="delete-container">
+                    
+                                {% for i in userrooms%}
+                                <form method="post" action="{% url 'deleteroom' %}"> 
+                                    {% csrf_token %}
+                                    <input value="{{i.roomid}}" name="deleteroomid" type="hidden">
+                                    {% if request.user == i.host %}
+                                        <div>
+                                            {{i.name}}
+                                            <button type="submit">Delete</button>
+                                        </div>
+
+                                    {% else %}
+                                        <div>
+                                            {{i.name}}
+                                            <button type="submit">Leave</button>
+                                        </div>
+                                    {% endif %}
+                                </form>
+                                {% endfor %}
+                            
+                    <a href="{% url 'home' %}">Cancel</a>
+                </div>
+            {% endif %}
+            
+            
+        {% endif %}
+    </nav>
+    <script src="{% static 'js/nav.js'%}" type="text/javascript"></script>
+    {% block content%}
+    {% endblock content%}
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+
+
+{% block content%}
+{% load static%}
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css'%}">
+
+
+    <div class="main-content">
+        <div class="rooms">
+            {% if request.user.is_authenticated %}
+                {% include 'roomslist.html'%}
+            {% endif %}
+        </div>
+        
+        <div class="chat-container">
+            {% if request.user.is_authenticated %}
+                {% include 'room.html'%}
+            {% else %}
+                {% include 'login.html' %}
+            {% endif %}
+        </div>
+    </div>
+
+
+
+
+    <script src="{% static 'js/test.js'%}" type="text/javascript"></script>
+    <script src="{% static 'js/room.js'%}" type="text/javascript"></script>
+{% endblock content %}

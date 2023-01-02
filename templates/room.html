@@ -1,0 +1,65 @@
+{% load static %}
+<div class="chat-nav">
+
+    
+    <button id="room-copy-id">{{room.name}}</button>
+    <p id="hover-room-name"></p>
+    {{room.roomid|json_script:"roomid"}}
+    {{request.user.username|json_script:"username"}}
+    {% if room %}
+        <div id="users-list-container">
+            <button id="user-list-open"><img  src="https://static.thenounproject.com/png/1144832-200.png" width="25"></button>
+            <div id="users-list-box">
+                <ul>
+                    <li>@{{room.host}}</li>
+                    <li>{% for i in participents%}
+                    @{{i.username}}
+                    {% endfor%}</li>
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+    
+</div>
+
+
+<div class="chat-message" >
+    
+    {% for i in messages %}
+        {% if request.user == i.host %}
+            <ul class="rightuser" id="rightuser">
+                
+                <li>
+                    <span><b>{{i.host}} </b>
+                        <p>{{i.body}}<p>
+                    <time>{{i.created|time}}</time>
+                </li>
+            </ul>
+
+            {% else %}
+            <ul>
+                <li>
+                    <span><b>{{i.host}}</b>
+                    <p>{{i.body}}<p>
+                    <time>{{i.created|time}}</time>
+                </li>
+            {% endif %}
+        </ul>
+    {% endfor %}
+    <p id="chat-message"></p>
+</div>
+
+
+{% if room != none %}
+<div class="message-form" >
+    <form action="." method="post">
+        {% csrf_token %}
+        <input value="{{room.roomid}}" name="roomid" type="text" id="copy-id">
+            <input class="sendmessage" id="sendmessage" type="text" placeholder="Typing.." name="newmessage" required>
+            <button class="sendmessage"  id="chat-message-submit" type="submit">Send</button>
+    </form>
+</div>
+{% endif %}
+
+<script src="{% static 'js/room.js'%}" type="text/javascript"></script>
+

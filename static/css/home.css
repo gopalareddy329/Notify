@@ -1,0 +1,313 @@
+:root {
+    --shadow:0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06);
+  }
+  body{
+    position: fixed;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+  }
+    nav #open{
+        float: right;
+    }
+   
+    #mainmenu{
+        position: absolute;
+        top: 2%;
+        right: 2%;
+        font-size: small;
+        width: fit-content;
+        min-width: 300px;
+        max-width: fit-content;
+        height: fit-content;
+        max-height: 60%;
+        background-color:rgba(21,27,34,255);
+        box-shadow: var(--shadow);
+        overflow: scroll;
+        z-index: 10;
+        flex-direction: column;
+        transition: top 2s ease 0s;
+        display: none;
+        color: rgba(246,62,142,255);
+    }
+    #mainmenu:hover { 
+        display: flex;
+    }
+    #mainmenu #close{
+        position: absolute;
+        right: 2%;
+    }
+    nav img{
+        width: 30px;
+        height: 20px;
+        object-fit: scale-down ;
+    }
+    .content span{
+        float: right;
+    }
+    .content li{
+        list-style: none;
+        border-radius: 5px;
+        padding: 5px;
+        display:s;
+        border: 1px solid white;
+        background-color:rgba(20,19,34,255);
+        
+    }
+    .main-content{
+        height: 50%;
+    }
+    .rooms{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        box-shadow: var(--shadow);
+        background-color:rgba(21,27,34,255);
+        height: 100%;
+        overflow-y: scroll;
+        
+    }
+    .rooms-part div:last-child{
+        margin-bottom: 15%;
+    }
+    .room-container{
+        height: 150px;
+        min-height: 120px;
+        width: 97%;
+        border: 1px solid white;
+        border-radius: 5px;
+        color: rgba(246,62,142,255);
+        margin: 2px;
+        background-color:rgba(20,19,34,255);
+        padding: 8px;
+    }
+    .room-container .submit{
+        text-decoration: none;
+        border: 2px gray solid;
+        border-radius: 10px;
+        padding: 5px;
+        color: rgba(200,211,218,255);
+        background-color: rgba(32,38,45,255);
+        display: flex;
+        align-items: flex-end;
+        float: right;
+        transform: translate(-50%,100%);
+    }
+
+    .room-container .submit:hover{
+        background-color: aqua;
+        color: rgba(246,62,142,255)
+    }
+    .room-container:last-child::after{
+        margin: 2000px;
+    }
+    .rooms .searchroom{
+        margin-left: auto;
+        color: aliceblue;
+        margin-right: auto;
+        display: block;
+        width: 95%;
+        padding: 6px;
+        height: 25px;
+        border: 1px beige solid;
+        border-radius: 8px;
+        background-color: #202c33;
+    }
+    .main-content{
+        display:grid;
+        overflow: hidden;
+        grid-template-columns: 1fr 2fr;
+        background-color: dimgray;
+        height:100%;
+        
+   
+    }
+    .chat-container{
+        height: 100%;
+        background-color: dimgray;
+        overflow:scroll;
+    }
+    .chat-nav{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color:cadetblue;
+        
+    }
+    .chat-nav button{
+        background-color: transparent;
+        border: none;
+        font-size: x-large;
+        font-weight: bold;
+        text-transform: uppercase;
+        height: 40px;
+    }
+    .chat-nav button:hover{
+        color: aqua;
+    }
+    .chat-nav #users-list-container{
+        z-index: 1;
+        position: fixed;
+        right: 2%;
+        
+    }
+    .chat-nav #users-list-box{
+        display: none;
+        
+
+        background-color: black;
+        padding: 3px;
+        color: yellow;
+        position: absolute ;
+        right: 2%;
+    }
+    .chat-container li{
+        list-style-type: none;
+        padding: 2px;
+        color: white;
+        
+    }
+    .chat-message{
+        padding: 20px;
+        overflow: scroll;
+        display: flex;
+        flex-direction: column;
+        height: 85%;
+    }
+    .chat-message::after{
+        margin-top: 15%;
+    }
+    .chat-message ul{
+        margin: 20px;
+        border: 1px black solid;
+        max-width: 70%;
+        background-color: darkslategray;
+        z-index: 0;
+        width:fit-content;
+        min-width: 25%;
+        padding: 2px;
+        border-radius: 5px;
+        height: fit-content;
+        
+    }
+    .chat-message .rightuser{
+        position: relative;
+        margin-left: 70%;
+        
+    }
+    .chat-message ul span{
+        margin-bottom: 2px;
+        
+        font-size: 15px;
+        color: aquamarine;
+    }
+    .chat-message ul span #delete-check{
+        margin-left: 90%;
+        background-color: transparent;
+        border: none;
+    }
+    .chat-message  time{
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+
+    }
+    .chat-container .message-form{
+        z-index: 10;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #202c33;
+        height: 6%;
+        padding: 5px;
+        
+  
+    }
+    .message-form .sendmessage{
+        margin-left: 10%;
+        width: 40%;
+        color:white;
+        border:1px solid gray;
+        padding: 5px;
+        border-radius: 7px;
+        background-color: rgba(32,38,45,255);
+        
+    }
+    .message-form #chat-message-submit{
+        position: relative;
+        margin-left: 2%;
+        width: fit-content;
+    }
+
+    #hover-room-name{
+        position:relative;
+        margin-left: 5%;
+        border: 2px solid rgb(140, 166, 140);
+        background-color: aliceblue;
+        padding: 5px;
+        display: none;
+    }
+    
+    /* Login */
+.chat-container .login-box{
+    width: 100%;
+    height: 100%;
+    background-color: dimgray;
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+
+}
+.chat-container .login-box h3{
+    display: flex;
+    justify-content: center;
+}
+ .login-box .login-container{
+    background-color: white;
+    width: 35%;
+    min-width: 200px;
+    min-height: 220px;
+    height: fit-content;
+    display:flex;
+    flex-direction:column;
+    padding: 10px;
+    overflow: hidden;
+
+ }
+.login-box .login-container label{
+    margin-bottom: 20%;
+ }
+
+ .login-box .login-container input{
+    margin-top: 3%;
+    margin-bottom: 5%;
+    padding: 8px 8px 2px 8px;
+    border: none;
+    border-bottom: solid black 1px;
+    width: 80%;
+    background-color: transparent;
+ }
+
+ .login-box .login-container button{
+    margin-top: 8%;
+    margin-bottom: auto;
+    border: 1px black solid;
+    background-color: transparent;
+    padding: 5px;
+    margin-right: 50%;
+    margin-left: 50%;
+    transform: translate(-50%,-50%);
+ }
+
+ .login-box .slide-login{
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        left: 0;
+        
+ }
+.login-box .login-container .signup-slide{
+    display: none;
+}
