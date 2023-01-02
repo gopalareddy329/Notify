@@ -45,8 +45,6 @@ class Groupchat(AsyncWebsocketConsumer):
         message=str(text_data["message"])
         username=text_data["username"]
         roomid=text_data["room"]
-        if message!="None":
-            await self.save_message(roomid,username,message)
         await self.channel_layer.group_send(
             
             self.room_group_name,
@@ -73,15 +71,7 @@ class Groupchat(AsyncWebsocketConsumer):
 
         
 
-    @sync_to_async
-    def save_message(self,roomid,username,message):
-        try:
-            room=Room.objects.get(roomid=roomid)
-            user=User.objects.get(username=username)
-            if message !="" and message is not None:
-                Message.objects.create(host=user,body=message,Room=room)
-        except:
-            pass
+
 
     
 

@@ -52,10 +52,10 @@
 
 {% if room != none %}
 <div class="message-form" >
-    <form action="." method="post">
+    <form action="{% url 'home' %}" method="post">
         {% csrf_token %}
         <input value="{{room.roomid}}" name="roomid" type="text" id="copy-id">
-            <input class="sendmessage" id="sendmessage" type="text" placeholder="Typing.." name="newmessage" required>
+            <input name="user-sending" class="sendmessage" id="sendmessage" type="text" placeholder="Typing.." name="newmessage" required>
             <button class="sendmessage"  id="chat-message-submit" type="submit">Send</button>
     </form>
 </div>

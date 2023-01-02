@@ -28,6 +28,11 @@ def home(request):
                 participents=room.participents.all()
                 members=room.participents.contains(request.user)
                 members=True if request.user ==room.host else members
+                try:
+                    rmessage=request.POST.get("user-sending")
+                    user=User.objects.get(username=request.user)
+                    Message.objects.create(host=user,body=rmessage,Room=room)
+                except:pass
                 if members:
                     messages=room.message_set.all()
                     context['room']=room
